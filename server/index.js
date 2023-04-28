@@ -32,6 +32,9 @@ app.use('/server/booking', bookingRoutes);
 app.use('/server/user', userRoutes);
 app.use('/server/profile', profileRoutes);
 app.use('/server/getcompany', companyRoutes);
+app.get('/', (req, res) => {
+  res.send('Hello Hoang');
+});
 app.listen(8000, () => {
   console.log('Connected to backend!');
 });

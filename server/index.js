@@ -5,6 +5,7 @@ import userRoutes from './routes/user.js';
 import profileRoutes from './routes/member.js';
 import companyRoutes from './routes/company.js';
 import cors from 'cors';
+import mysql from 'mysql';
 import multer from 'multer';
 
 const app = express();
@@ -34,6 +35,27 @@ app.use('/server/profile', profileRoutes);
 app.use('/server/getcompany', companyRoutes);
 app.get('/', (req, res) => {
   res.send('Hello Hoang');
+});
+app.get('/server', (req, res) => {
+  const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Duckien.2001',
+    database: 'vjc-matching',
+    multipleStatements: true,
+  })
+
+  db.connect(function (err) {
+        if (err) {
+            res.send('Connection error: ' + err);
+            return;
+        }
+
+        db.query("SHOW DATABASES;", function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        });
+    });
 });
 app.listen(8000, () => {
   console.log('Connected to backend!');

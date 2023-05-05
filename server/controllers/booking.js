@@ -29,7 +29,7 @@ export const booking = (req, res) => {
 
 export const getCompanyBooking = (req, res) => {
   const q =
-    'SELECT DISTINCT b.*, a.company_name as company_name_booked, c.company_name_booking FROM user_register as a inner join slot_booking as b left join booking as c on company_name = c.company_name_booked and slot_number = c.slot_booking where company_name = ?';
+    'SELECT DISTINCT b.slot_number as slot_booking, b.start_time_booking, b.end_time_booking, a.id as company_ID, a.company_name as company_name_booked, c.company_name_booking FROM user_register as a inner join slot_booking as b left join booking as c on company_name = c.company_name_booked and c.slot_booking = slot_number where a.id = ?';
 
   db.query(q, [req.params.company_name], (err, data) => {
     if (err) {

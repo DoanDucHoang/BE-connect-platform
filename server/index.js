@@ -5,9 +5,7 @@ import userRoutes from './routes/user.js';
 import profileRoutes from './routes/member.js';
 import companyRoutes from './routes/company.js';
 import cors from 'cors';
-import mysql from 'mysql';
 import multer from 'multer';
-import { db } from './connect.js';
 
 const app = express();
 app.use(express.json());
@@ -34,19 +32,7 @@ app.use('/server/booking', bookingRoutes);
 app.use('/server/user', userRoutes);
 app.use('/server/profile', profileRoutes);
 app.use('/server/getcompany', companyRoutes);
-app.get('/', (req, res) => {
-  res.send('Hello Hoang');
-});
-app.get('/server', (req, res) => {
-  const q = "SHOW DATABASES";
 
-  db.query(q, (err, data) => { 
-    if (err) {
-      return res.status(500).json(err);
-    }
-    return res.status(200).json(data);
-  })
-});
 app.listen(8000, () => {
   console.log('Connected to backend!');
 });

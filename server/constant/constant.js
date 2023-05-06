@@ -8,7 +8,7 @@ export const QUERY_UPDATE_PROFILE = {
   QUERY_SPECIALTIES:
     'INSERT INTO company_specialties (`email`, `company_name`, `speciality_picture`, `speciality_desc`, `speciality_desc_en`, `speciality_desc_jp`) VALUES ?',
   QUERY_CORE_MEMBERS:
-    'INSERT INTO company_core_members (`email`, `company_name`, `member_name`, `member_position`, `member_picture`, `member_desc`) VALUES ?',
+    'INSERT INTO company_core_members (`email`, `company_name`, `member_name`, `member_position`,`member_position_EN`,`member_position_JP`, `member_picture`, `member_desc`, `member_desc_EN`, `member_desc_JP`) VALUES ?',
   QUERY_MAIN_CLIENTS:
-    'INSERT INTO company_main_clients (`email`, `company_name`, `client_name`, `client_logo`, `client_url`) VALUES ?',
+    'INSERT INTO company_main_clients (`email`, `company_name`, `client_name`, `client_logo`, `client_url`, `client_url_EN`, `client_url_JP`) VALUES ?',
 };

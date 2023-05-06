@@ -66,32 +66,38 @@ export const updateProfile = (req, res) => {
     ];
   }
 
-  // for (let index = 0; index < req.body[4].length; index++) {
-  //   valuesCoreMembers = [
-  //     ...valuesCoreMembers,
-  //     [
-  //       req.body[4][index].email,
-  //       req.body[4][index].company_name,
-  //       req.body[4][index].member_name,
-  //       req.body[4][index].member_position,
-  //       req.body[4][index].member_picture,
-  //       req.body[4][index].member_desc,
-  //     ],
-  //   ];
-  // }
+  for (let index = 0; index < req.body[4].length; index++) {
+    valuesCoreMembers = [
+      ...valuesCoreMembers,
+      [
+        req.body[4][index].email,
+        req.body[4][index].company_name,
+        req.body[4][index].member_name,
+        req.body[4][index].member_position,
+        req.body[4][index].member_position_EN,
+        req.body[4][index].member_position_JP,
+        req.body[4][index].member_picture,
+        req.body[4][index].member_desc,
+        req.body[4][index].member_desc_JP,
+        req.body[4][index].member_desc_EN,
+      ],
+    ];
+  }
 
-  // for (let index = 0; index < req.body[5].length; index++) {
-  //   valuesMainClients = [
-  //     ...valuesMainClients,
-  //     [
-  //       req.body[5][index].email,
-  //       req.body[5][index].company_name,
-  //       req.body[5][index].client_name,
-  //       req.body[5][index].client_logo,
-  //       req.body[5][index].client_url,
-  //     ],
-  //   ];
-  // }
+  for (let index = 0; index < req.body[5].length; index++) {
+    valuesMainClients = [
+      ...valuesMainClients,
+      [
+        req.body[5][index].email,
+        req.body[5][index].company_name,
+        req.body[5][index].client_name,
+        req.body[5][index].client_logo,
+        req.body[5][index].client_url,
+        req.body[5][index].client_url_EN,
+        req.body[5][index].client_url_JP,
+      ],
+    ];
+  }
 
   db.query(q, [req.body[0].company_name], (err, data) => {
     if (err) {
@@ -138,25 +144,25 @@ export const updateProfile = (req, res) => {
       }
     );
 
-    // db.query(
-    //   QUERY_UPDATE_PROFILE.QUERY_CORE_MEMBERS,
-    //   [valuesCoreMembers],
-    //   (err, data) => {
-    //     if (err) {
-    //       return res.status(500).json(err);
-    //     }
-    //   }
-    // );
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_CORE_MEMBERS,
+      [valuesCoreMembers],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        }
+      }
+    );
 
-    // db.query(
-    //   QUERY_UPDATE_PROFILE.QUERY_MAIN_CLIENTS,
-    //   [valuesMainClients],
-    //   (err, data) => {
-    //     if (err) {
-    //       return res.status(500).json(err);
-    //     }
-    //   }
-    // );
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_MAIN_CLIENTS,
+      [valuesMainClients],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        }
+      }
+    );
 
     return res.status(200).json('successfull');
   });

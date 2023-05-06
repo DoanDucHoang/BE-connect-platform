@@ -52,17 +52,19 @@ export const updateProfile = (req, res) => {
     ];
   }
 
-  // for (let index = 0; index < req.body[3].length; index++) {
-  //   valuesSpecialties = [
-  //     ...valuesSpecialties,
-  //     [
-  //       req.body[3][index].email,
-  //       req.body[3][index].company_name,
-  //       req.body[3][index].speciality_picture,
-  //       req.body[3][index].speciality_desc,
-  //     ],
-  //   ];
-  // }
+  for (let index = 0; index < req.body[3].length; index++) {
+    valuesSpecialties = [
+      ...valuesSpecialties,
+      [
+        req.body[3][index].email,
+        req.body[3][index].company_name,
+        req.body[3][index].speciality_picture,
+        req.body[3][index].speciality_desc,
+        req.body[3][index].speciality_desc_en,
+        req.body[3][index].speciality_desc_jp,
+      ],
+    ];
+  }
 
   // for (let index = 0; index < req.body[4].length; index++) {
   //   valuesCoreMembers = [
@@ -126,15 +128,15 @@ export const updateProfile = (req, res) => {
       }
     );
 
-    // db.query(
-    //   QUERY_UPDATE_PROFILE.QUERY_SPECIALTIES,
-    //   [valuesSpecialties],
-    //   (err, data) => {
-    //     if (err) {
-    //       return res.status(500).json(err);
-    //     }
-    //   }
-    // );
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_SPECIALTIES,
+      [valuesSpecialties],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        }
+      }
+    );
 
     // db.query(
     //   QUERY_UPDATE_PROFILE.QUERY_CORE_MEMBERS,

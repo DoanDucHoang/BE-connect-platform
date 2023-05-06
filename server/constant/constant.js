@@ -2,7 +2,7 @@ export const QUERY_UPDATE_PROFILE = {
   QUERY_INFO:
     'INSERT INTO company_info (`email`, `company_name`, `company_logo`, `estalishment`, `employers`, `needs_vn`,`needs_en`,`needs_jp`, `category`, `capital`, `address_vn`, `address_en`,`address_jp`, `languages`, `logo_associations`, `info_url`) VALUES ?',
   QUERY_DESC:
-    'INSERT INTO company_description (`email`, `company_name`, `description`) VALUES ?',
+    'INSERT INTO company_description (`email`, `company_name`, `description`, `descriptionEN`, `descriptionJP`) VALUES ?',
   QUERY_PRODUCTS:
     'INSERT INTO company_products (`email`, `company_name`, `product_name`, `product_description`, `product_picture`, `product_url`) VALUES ?',
   QUERY_SPECIALTIES:

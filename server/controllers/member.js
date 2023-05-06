@@ -30,9 +30,9 @@ export const updateProfile = (req, res) => {
     ],
   ];
 
-  // let valuesDesc = [
-  //   [req.body[1].email, req.body[1].company_name, req.body[1].description],
-  // ];
+  let valuesDesc = [
+    [req.body[1].email, req.body[1].company_name, req.body[1].description, req.body[1].descriptionEN, req.body[1].descriptionJP],
+  ];
 
   // for (let index = 0; index < req.body[2].length; index++) {
   //   valuesProducts = [
@@ -102,15 +102,16 @@ export const updateProfile = (req, res) => {
         if (err) {
           return res.status(500).json(err);
         }
-        return res.status(200).json('successfull');
+        
       }
     );
 
-    // db.query(QUERY_UPDATE_PROFILE.QUERY_DESC, [valuesDesc], (err, data) => {
-    //   if (err) {
-    //     return res.status(500).json(err);
-    //   }
-    // });
+    db.query(QUERY_UPDATE_PROFILE.QUERY_DESC, [valuesDesc], (err, data) => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      return res.status(200).json('successfull');
+    });
 
     // db.query(
     //   QUERY_UPDATE_PROFILE.QUERY_PRODUCTS,

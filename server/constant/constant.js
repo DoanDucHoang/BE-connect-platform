@@ -4,7 +4,7 @@ export const QUERY_UPDATE_PROFILE = {
   QUERY_DESC:
     'INSERT INTO company_description (`email`, `company_name`, `description`, `descriptionEN`, `descriptionJP`) VALUES ?',
   QUERY_PRODUCTS:
-    'INSERT INTO company_products (`email`, `company_name`, `product_name`, `product_description`, `product_picture`, `product_url`) VALUES ?',
+    'INSERT INTO company_products (`email`, `company_name`, `product_name`,`product_name_EN`,`product_name_JP`, `product_description`,`product_description_EN`,`product_description_JP`, `product_picture`, `product_url`) VALUES ?',
   QUERY_SPECIALTIES:
     'INSERT INTO company_specialties (`email`, `company_name`, `speciality_picture`, `speciality_desc`) VALUES ?',
   QUERY_CORE_MEMBERS:

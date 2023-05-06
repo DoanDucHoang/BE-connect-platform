@@ -34,19 +34,23 @@ export const updateProfile = (req, res) => {
     [req.body[1].email, req.body[1].company_name, req.body[1].description, req.body[1].descriptionEN, req.body[1].descriptionJP],
   ];
 
-  // for (let index = 0; index < req.body[2].length; index++) {
-  //   valuesProducts = [
-  //     ...valuesProducts,
-  //     [
-  //       req.body[2][index].email,
-  //       req.body[2][index].company_name,
-  //       req.body[2][index].product_name,
-  //       req.body[2][index].product_description,
-  //       req.body[2][index].product_picture,
-  //       req.body[2][index].product_url,
-  //     ],
-  //   ];
-  // }
+  for (let index = 0; index < req.body[2].length; index++) {
+    valuesProducts = [
+      ...valuesProducts,
+      [
+        req.body[2][index].email,
+        req.body[2][index].company_name,
+        req.body[2][index].product_name,
+        req.body[2][index].product_name_EN,
+        req.body[2][index].product_name_JP,
+        req.body[2][index].product_description,
+        req.body[2][index].product_description_EN,
+        req.body[2][index].product_description_JP,
+        req.body[2][index].product_picture,
+        req.body[2][index].product_url,
+      ],
+    ];
+  }
 
   // for (let index = 0; index < req.body[3].length; index++) {
   //   valuesSpecialties = [
@@ -110,18 +114,17 @@ export const updateProfile = (req, res) => {
       if (err) {
         return res.status(500).json(err);
       }
-      return res.status(200).json('successfull');
     });
 
-    // db.query(
-    //   QUERY_UPDATE_PROFILE.QUERY_PRODUCTS,
-    //   [valuesProducts],
-    //   (err, data) => {
-    //     if (err) {
-    //       return res.status(500).json(err);
-    //     }
-    //   }
-    // );
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_PRODUCTS,
+      [valuesProducts],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        }
+      }
+    );
 
     // db.query(
     //   QUERY_UPDATE_PROFILE.QUERY_SPECIALTIES,
@@ -153,6 +156,6 @@ export const updateProfile = (req, res) => {
     //   }
     // );
 
-    
+    return res.status(200).json('successfull');
   });
 };

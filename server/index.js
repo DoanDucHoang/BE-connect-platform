@@ -5,11 +5,23 @@ import userRoutes from './routes/user.js';
 import profileRoutes from './routes/member.js';
 import companyRoutes from './routes/company.js';
 import cors from 'cors';
+import mysql from 'mysql';
 import multer from 'multer';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+const db = mysql.createConnection({
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
+  multipleStatements: process.env.multipleStatements,
+});
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

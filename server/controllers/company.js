@@ -35,6 +35,7 @@ export const getCompannyProfile = (req, res) => {
 };
 
 export const getAllCompannyProfile = (req, res) => {
+  console.log("object");
   const q =
     'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.company_name = b.company_name;';
 

@@ -35,9 +35,32 @@ export const getCompannyProfile = (req, res) => {
 };
 
 export const getAllCompannyProfile = (req, res) => {
-  console.log("object");
   const q =
     'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.company_name = b.company_name;';
+
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(data);
+  });
+};
+
+export const getFourCompanyJapan = (req, res) => {
+  const q =
+    'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.company_name = b.company_name where b.country = "Japan" ORDER BY b.id asc limit 4;';
+
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(data);
+  });
+};
+
+export const getFourCompanyVietNam = (req, res) => {
+  const q =
+    'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.company_name = b.company_name where b.country = "Viet Nam" ORDER BY b.id asc limit 4;';
 
   db.query(q, (err, data) => {
     if (err) {

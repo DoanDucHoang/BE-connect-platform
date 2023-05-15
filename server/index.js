@@ -23,23 +23,6 @@ const db = mysql.createConnection({
   multipleStatements: process.env.multipleStatements,
 });
 
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, '../../public/upload');
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + file.originalname);
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-
-// app.post('/api/upload', upload.single('file'), (req, res) => {
-//   const file = req.file;
-//   res.status(200).json(file);
-// });
-
 app.get('/s3Url', async (req, res) => { 
   const url = await generateUploadURL()
   res.send({url})

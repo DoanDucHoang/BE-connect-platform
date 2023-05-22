@@ -70,4 +70,13 @@ export const getFourCompanyVietNam = (req, res) => {
   });
 };
 
-//
+export const getCompanyByName = (req, res) => {
+  const q = 'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.company_name = b.company_name where a.company_name like ?;'
+
+  db.query(q, ['%' + req.body.company_name + '%'], (err, data) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(data);
+  });
+};

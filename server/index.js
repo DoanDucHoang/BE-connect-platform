@@ -26,7 +26,6 @@ const db = mysql.createConnection({
 app.get('/s3Url', async (req, res) => { 
   const url = await generateUploadURL()
   res.send({url})
-  //res.send("Hello")
 })
 
 app.use('/server/auth', authRoutes);

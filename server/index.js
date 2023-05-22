@@ -34,6 +34,6 @@ app.use('/server/user', userRoutes);
 app.use('/server/profile', profileRoutes);
 app.use('/server/getcompany', companyRoutes);
 
-app.listen(8000, () => {
+app.listen(8080, () => {
   console.log('Connected to backend!');
 });

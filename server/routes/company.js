@@ -4,12 +4,16 @@ import { getAllCompannyProfile } from '../controllers/company.js';
 import { getFourCompanyJapan } from '../controllers/company.js';
 import { getFourCompanyVietNam } from '../controllers/company.js';
 import { getCompanyByName } from '../controllers/company.js';
+import { getCompanyByCategory } from '../controllers/company.js';
+import { getAllCompannyJapanProfile } from '../controllers/company.js';
 
 const router = express.Router();
 
 router.get('/:company_name', getCompannyProfile);
 router.get('/', getAllCompannyProfile);
+router.post('/allcompanyjapan/:pages', getAllCompannyJapanProfile);
 router.post('/searchcompanyname', getCompanyByName);
+router.post('/searchcompanycategory', getCompanyByCategory);
 router.post('/japancompany', getFourCompanyJapan);
 router.post('/vietnamcompany', getFourCompanyVietNam);
 

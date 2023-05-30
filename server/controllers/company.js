@@ -1,4 +1,5 @@
 import { db } from '../connect.js';
+import { QUERY_UPDATE_PROFILE } from '../constant/constant.js';
 
 export const getCompannyProfile = (req, res) => {
   const q =
@@ -104,3 +105,122 @@ export const getCompanyByCategory = (req, res) => {
   });
 };
 
+export const updateIntroduce = (req, res) => {
+  const q = 'UPDATE `vjc-matching`.company_description SET description = ?, descriptionEN = ?, descriptionJP = ? WHERE email = ?'
+
+  db.query(q, [req.body.description, req.body.descriptionEN, req.body.descriptionJP, req.body.email], (err, data) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(data);
+  });
+};
+
+export const updateProduct = (req, res) => {
+  
+  for (let index = 0; index < req.body.length; index++) {
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_UPDATE_PRODUCT,
+      [
+        req.body[index].product_name,
+        req.body[index].product_name_EN,
+        req.body[index].product_name_JP,
+        req.body[index].product_description,
+        req.body[index].product_description_EN,
+        req.body[index].product_description_JP,
+        req.body[index].product_picture,
+        req.body[index].product_url,
+        req.body[index].id
+      ],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        } else if (index === req.body.length - 1){ 
+          return res.status(200).json(data);
+        }
+        
+      }
+    );
+  }
+
+};
+
+export const updateSpecialties = (req, res) => {
+  
+  for (let index = 0; index < req.body.length; index++) {
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_UPDATE_FEATURES,
+      [
+        req.body[index].speciality_desc,
+        req.body[index].speciality_desc_en,
+        req.body[index].speciality_desc_jp,
+        req.body[index].speciality_picture,
+        req.body[index].id
+      ],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        } else if (index === req.body.length - 1){ 
+          return res.status(200).json(data);
+        }
+        
+      }
+    );
+  }
+
+};
+
+export const updateCoreMember = (req, res) => {
+  
+  for (let index = 0; index < req.body.length; index++) {
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_UPDATE_CORE_MEMBER,
+      [
+        req.body[index].member_desc,
+        req.body[index].member_desc_EN,
+        req.body[index].member_desc_JP,
+        req.body[index].member_name,
+        req.body[index].member_picture,
+        req.body[index].member_position,
+        req.body[index].member_position_EN,
+        req.body[index].member_position_JP,
+        req.body[index].id
+      ],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        } else if (index === req.body.length - 1){ 
+          return res.status(200).json(data);
+        }
+        
+      }
+    );
+  }
+
+};
+
+export const updateClient = (req, res) => {
+  
+  for (let index = 0; index < req.body.length; index++) {
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_UPDATE_CLIENT,
+      [
+        req.body[index].client_name,
+        req.body[index].client_logo,
+        req.body[index].client_url,
+        req.body[index].client_url_EN,
+        req.body[index].client_url_JP,
+        req.body[index].id
+      ],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        } else if (index === req.body.length - 1){ 
+          return res.status(200).json(data);
+        }
+        
+      }
+    );
+  }
+
+};

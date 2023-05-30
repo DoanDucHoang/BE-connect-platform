@@ -11,4 +11,14 @@ export const QUERY_UPDATE_PROFILE = {
     'INSERT INTO company_core_members (`email`, `company_name`, `member_name`, `member_position`,`member_position_EN`,`member_position_JP`, `member_picture`, `member_desc`, `member_desc_EN`, `member_desc_JP`) VALUES ?',
   QUERY_MAIN_CLIENTS:
     'INSERT INTO company_main_clients (`email`, `company_name`, `client_name`, `client_logo`, `client_url`, `client_url_EN`, `client_url_JP`) VALUES ?',
+  QUERY_UPDATE_PRODUCT:
+  'UPDATE company_products SET product_name = ?, product_name_EN = ?, product_name_JP = ?, product_description = ?, product_description_EN = ?, product_description_JP = ?, product_picture = ?, product_url = ? WHERE id = ?',
+  QUERY_UPDATE_FEATURES:
+  'UPDATE company_specialties SET speciality_desc = ?, speciality_desc_en = ?, speciality_desc_jp = ?, speciality_picture = ? WHERE id = ?',
+  QUERY_UPDATE_CORE_MEMBER:
+    'UPDATE company_core_members SET member_desc = ?, member_desc_EN = ?, member_desc_JP = ?, member_name = ?, member_picture = ?, member_position = ?, member_position_EN = ?, member_position_JP = ? WHERE id = ?',
+  QUERY_UPDATE_CLIENT:
+    'UPDATE company_main_clients SET client_name = ?, client_logo = ?, client_url = ?, client_url_EN = ?, client_url_JP = ?  WHERE id = ?',
+  QUERY_UPDATE_INFO:
+    'UPDATE company_info SET client_name = ?, client_logo = ?, client_url = ?, client_url_EN = ?, client_url_JP = ?  WHERE id = ?',
 };

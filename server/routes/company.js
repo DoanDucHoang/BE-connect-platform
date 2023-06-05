@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.get('/:company_name', getCompannyProfile);
 router.get('/', getAllCompannyProfile);
-router.post('/allcompanyjapan/:pages', getAllCompannyJapanProfile);
+router.post('/allcompanyjapan/pages=', getAllCompannyJapanProfile);
 router.post('/searchcompanyname', getCompanyByName);
 router.post('/searchcompanycategory', getCompanyByCategory);
 router.post('/japancompany', getFourCompanyJapan);

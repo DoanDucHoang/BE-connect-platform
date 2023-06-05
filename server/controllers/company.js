@@ -49,9 +49,9 @@ export const getAllCompannyProfile = (req, res) => {
 
 export const getAllCompannyJapanProfile = (req, res) => {
    const q =
-    'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.company_name = b.company_name where b.country = "japan" limit ?,2;';
+    'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.company_name = b.company_name where b.country = "japan" limit ?, ?;';
 
-  db.query(q, [Number(req.params.pages)], (err, data) => {
+  db.query(q, [req.body.pages, req.body.limit], (err, data) => {
     if (err) {
       return res.status(500).json(err);
     }

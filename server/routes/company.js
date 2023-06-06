@@ -1,5 +1,5 @@
 import express from 'express';
-import { getCompannyProfile, updateClient } from '../controllers/company.js';
+import { getCompannyProfile, updateClient, updateInfo, updateCompanyName } from '../controllers/company.js';
 import { getAllCompannyProfile } from '../controllers/company.js';
 import { getFourCompanyJapan } from '../controllers/company.js';
 import { getFourCompanyVietNam } from '../controllers/company.js';
@@ -25,5 +25,7 @@ router.put('/update_product', updateProduct);
 router.put('/update_specialties', updateSpecialties);
 router.put('/update_core_member', updateCoreMember);
 router.put('/update_client', updateClient);
+router.put('/update_info', updateInfo);
+router.put('/update_company_name', updateCompanyName);
 
 export default router;

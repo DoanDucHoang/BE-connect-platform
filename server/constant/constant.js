@@ -20,5 +20,8 @@ export const QUERY_UPDATE_PROFILE = {
   QUERY_UPDATE_CLIENT:
     'UPDATE company_main_clients SET client_name = ?, client_logo = ?, client_url = ?, client_url_EN = ?, client_url_JP = ?  WHERE id = ?',
   QUERY_UPDATE_INFO:
-    'UPDATE company_info SET client_name = ?, client_logo = ?, client_url = ?, client_url_EN = ?, client_url_JP = ?  WHERE id = ?',
+    'UPDATE company_info SET estalishment = ?, employers = ?, needs_vn = ?, needs_en = ?, needs_jp = ?, company_logo = ?, languages = ?, category = ?, capital = ?, address_vn = ?, address_en = ?, address_jp = ?, company_name = ?, info_url =? WHERE id = ?',
+  
+  QUERY_UPDATE_COMPANY_NAME:
+    'update company_main_clients set company_name = ? where email = ?; update company_core_members set company_name = ? where email = ?; update company_specialties set company_name = ? where email = ?; update company_products set company_name = ? where email = ?; update company_description set company_name = ? where email = ?; update company_info set company_name = ? where email = ?; update user_register set company_name = ? where email = ?;',
 };

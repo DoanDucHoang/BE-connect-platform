@@ -222,5 +222,67 @@ export const updateClient = (req, res) => {
       }
     );
   }
+};
 
+export const updateInfo = (req, res) => {
+  
+  for (let index = 0; index < req.body.length; index++) {
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_UPDATE_INFO,
+      [
+        req.body[index].estalishment,
+        req.body[index].employers,
+        req.body[index].needs_vn,
+        req.body[index].needs_en,
+        req.body[index].needs_jp,
+        req.body[index].company_logo,
+        req.body[index].languages,
+        req.body[index].category,
+        req.body[index].capital,
+        req.body[index].address_vn,
+        req.body[index].address_en,
+        req.body[index].address_jp,
+        req.body[index].company_name,
+        req.body[index].info_url,
+        req.body[index].id
+      ],
+      (err, data) => {
+        if (err) {
+          return res.status(500).json(err);
+        } else if (index === req.body.length - 1){ 
+          return res.status(200).json(data);
+        }
+        
+      }
+    );
+  }
+};
+
+export const updateCompanyName = (req, res) => {
+    db.query(
+      QUERY_UPDATE_PROFILE.QUERY_UPDATE_COMPANY_NAME,
+      [
+        req.body.company_name,
+        req.body.email,
+        req.body.company_name,
+        req.body.email,
+        req.body.company_name,
+        req.body.email,
+        req.body.company_name,
+        req.body.email,
+        req.body.company_name,
+        req.body.email,
+        req.body.company_name,
+        req.body.email,
+        req.body.company_name,
+        req.body.email,
+      ],
+      (err, data) => {
+        if (err) { 
+          return res.status(500).json(err);
+        } else { 
+          return res.status(200).json(data);
+        }
+      }
+    );
 };

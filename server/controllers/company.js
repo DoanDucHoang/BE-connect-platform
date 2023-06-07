@@ -95,9 +95,9 @@ export const getCompanyByName = (req, res) => {
 };
 
 export const getCompanyByCategory = (req, res) => {
-  const q = `SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.email = b.email where a.category like ? and country = 'Japan' limit ?, ?;`
+  const q = `SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.email = b.email where b.country = "japan" and category = ? limit ?, ?;`
 
-  db.query(q, ['%' + req.body.category + '%', req.body.pages, req.body.limit], (err, data) => {
+  db.query(q, [req.body.category, req.body.pages, req.body.limit], (err, data) => {
     if (err) {
       return res.status(500).json(err);
     }

@@ -82,7 +82,6 @@ export const getFourCompanyVietNam = (req, res) => {
     return res.status(200).json(data);
   });
 };
-// hello
 
 export const getCompanyByName = (req, res) => {
   const q = 'SELECT a.*, b.country, b.id as company_ID FROM company_info as a inner join user_register as b on a.email = b.email where a.company_name like ?;'
